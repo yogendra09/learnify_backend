@@ -19,7 +19,7 @@ exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
 })
 
 exports.iaAdmin = catchAsyncErrors(async(req, res, next)=>{
-    const { token } = req.cookies;
+    const  token = req.cookies.token || req.body.headers.Authorization.split(" ")[1];
 
     const { id } = jwt.verify(token, process.env.JWT_SECRECT);
     const user = await userModel.findById(id)
