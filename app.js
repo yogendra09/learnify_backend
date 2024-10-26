@@ -31,7 +31,6 @@ app.use(
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
     cookie:{maxAge:1000*60*60*2},
-    secret:process.env.EXPRESS_SESSION_SECRET,
     store:mongoStore.create({
       mongoUrl:process.env.MONGO_URL,
       autoRemove:'disabled'
