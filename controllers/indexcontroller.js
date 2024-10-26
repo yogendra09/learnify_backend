@@ -13,7 +13,7 @@ exports.homepage = catchAsyncErrors(async (req, res, next) => {
 exports.currentuser = catchAsyncErrors(async (req, res, next) => {
     console.log(req.body.headers.Authorization)
     let student = await studentModel.findById(req.id).exec()
-    res.json({ user:student })
+    res.json({ student,token:req.body.headers.Authorization })
 })
 
 
