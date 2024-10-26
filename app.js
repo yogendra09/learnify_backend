@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid')
 const mongoStore = require("connect-mongo")
 
 // //dotnev
-require("dotenv").config({path:".env"});
+require("dotenv").config();
 
 app.use(
   cors({
@@ -42,15 +42,15 @@ app.use(cookiesParser());
 // dbb connected
 require("./dbconnection/connectDb").dbConnectio();
 
-const ErorrHander = require("./utils/errorhandels");
+const ErorrHander = require("./utils/errorhandels.js");
 const fileUpload = require("express-fileupload");
 app.use(fileUpload());
 
-const { genratedErrors } = require("./middlewares/error");
-const { isAuthenticated } = require("./middlewares/auth");
+const { genratedErrors } = require("./middlewares/error.js");
+const { isAuthenticated } = require("./middlewares/auth.js");
 
-app.use("/", require("./routes/indexroute"));
-app.use("/", require("./routes/courseroute"));
+app.use("/", require("./routes/indexRoute.js"));
+app.use("/", require("./routes/courseroute.js"));
 
 
 
