@@ -12,7 +12,7 @@ exports.homepage = catchAsyncErrors(async (req, res, next) => {
 
 exports.currentuser = catchAsyncErrors(async (req, res, next) => {
     let student = await studentModel.findById(req.id).exec()
-    res.json({ student })
+    res.json({ user:student })
 })
 
 
