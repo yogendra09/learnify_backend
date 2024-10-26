@@ -3,6 +3,7 @@ const cors = require("cors");
 const app = express();
 const Razorpay = require("razorpay")
 const { v4: uuidv4 } = require('uuid')
+const mongoStore = require("connect-mongo")
 
 // //dotnev
 require("dotenv").config({path:".env"});
@@ -29,6 +30,12 @@ app.use(
     resave: true,
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET,
+    cookie:{maxAge:1000*60*60*2},
+    secret:process.env.EXPRESS_SESSION_SECRET,
+    store:mongoStore.create({
+      mongoUrl:process.env.MONGO_URL,
+      autoRemove:'disabled'
+    })
   })
 );
 app.use(cookiesParser());
