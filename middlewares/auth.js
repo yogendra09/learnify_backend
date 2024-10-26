@@ -6,7 +6,7 @@ const userModel = require("../Models/studentModel")
 
 exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
     const  token = req.cookies.token || req.body.headers.Authorization.split(" ")[1];
-
+    console.log(token,req.body.headers)
     if (!token) {
         return next(new ErorrHander("Please login in to access the resource", 401))
     }
