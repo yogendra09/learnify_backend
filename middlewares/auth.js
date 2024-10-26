@@ -5,7 +5,7 @@ const userModel = require("../Models/studentModel")
 
 
 exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
-    const  token = req.cookies.token || req.headers.Authorization.split(" ")[1];
+    const  token = req.cookies.token || req.headers.authorization.split(" ")[1];
     console.log(token,req.body.headers.Authorization)
     if (!token) {
         return next(new ErorrHander("Please login in to access the resource", 401))
@@ -19,7 +19,7 @@ exports.isAuthenticated = catchAsyncErrors(async (req, res, next) => {
 })
 
 exports.iaAdmin = catchAsyncErrors(async(req, res, next)=>{
-    const  token = req.cookies.token || req.headers.Authorization.split(" ")[1];
+    const  token = req.cookies.token || req.headers.authorization.split(" ")[1];
 
     const { id } = jwt.verify(token, process.env.JWT_SECRECT);
     const user = await userModel.findById(id)
