@@ -84,7 +84,7 @@ app.post("/api/payment/verify", isAuthenticated,(req, res) => {
   var {
     validatePaymentVerification,
     validateWebhookSignature,
-  } = require("../BackEnd/node_modules/razorpay/dist/utils/razorpay-utils");
+  } = require("./node_modules/razorpay/dist/utils/razorpay-utils.js");
   var result = validatePaymentVerification(
     { order_id: razorpayOrderId, payment_id: razorpayPaymentId },
     signature,
